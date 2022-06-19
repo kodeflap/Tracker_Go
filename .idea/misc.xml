@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/TrackerGo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/TrackerGo/app/src/main/res/drawable/bottom_click_event.xml" value="0.1" />
         <entry key="..\:/TrackerGo/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/TrackerGo/app/src/main/res/layout/fragment_run.xml" value="0.18" />

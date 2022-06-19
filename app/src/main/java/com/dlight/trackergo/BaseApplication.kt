@@ -1,4 +1,4 @@
-package com.dlight.trackergo.base
+package com.dlight.trackergo
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -6,7 +6,8 @@ import androidx.room.TypeConverters
 
 @Database(
     entities = [Run::class],
-    version = 2
+    version = 2,
+    exportSchema = false
 )
 @TypeConverters(Converters::class)
 abstract class RunningDatabase: RoomDatabase() {

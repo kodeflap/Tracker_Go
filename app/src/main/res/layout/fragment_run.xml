@@ -43,7 +43,7 @@
         android:backgroundTint="@color/purple_700"
         android:clickable="true"
         android:contentDescription="@string/app_name"
-        android:tint="@color/purple_500"
+        android:tint="@color/white"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
