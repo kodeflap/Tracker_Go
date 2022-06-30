@@ -16,9 +16,7 @@ import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.dlight.trackergo.R
-import com.dlight.trackergo.ui.MainActivity
 import com.dlight.trackergo.util.Constants.ACTION_PAUSE_SERVICE
-import com.dlight.trackergo.util.Constants.ACTION_SHOW_TRACKING_FRAGMENT
 import com.dlight.trackergo.util.Constants.ACTION_START_OR_RESUME_SERVICE
 import com.dlight.trackergo.util.Constants.ACTION_STOP_SERVICE
 import com.dlight.trackergo.util.Constants.FASTEST_LOCATION_INTERVAL
@@ -49,6 +47,7 @@ typealias PolyLines = MutableList<Polyline>
 class TrackingService: LifecycleService() {
 
     var isFirstRun = true
+    var serviceKilled = false
 
     @Inject
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
@@ -60,10 +59,17 @@ class TrackingService: LifecycleService() {
 
     private val timeRunInSeconds = MutableLiveData<Long>()
 
-    companion object{
+    companion object {
         val timeRunInMills = MutableLiveData<Long>()
         val isTracking = MutableLiveData<Boolean>()
         val pathPoints = MutableLiveData<PolyLines>()
+    }
+
+    private fun postInitialValues() {
+        isTracking.postValue(false)
+        pathPoints.postValue(mutableListOf())
+        timeRunInSeconds.postValue(0L)
+        timeRunInMills.postValue(0L)
     }
 
     override fun onCreate() {
@@ -77,17 +83,20 @@ class TrackingService: LifecycleService() {
         })
     }
 
-    private fun postInitialValues() {
-        isTracking.postValue(false)
-        pathPoints.postValue(mutableListOf())
-        timeRunInSeconds.postValue(0L)
-        timeRunInMills.postValue(0L)
+    private fun killService() {
+        serviceKilled = true
+        isFirstRun = true
+        pauseService()
+        postInitialValues()
+        stopForeground(true)
+        stopSelf()
     }
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         intent?.let {
-            when(it.action) {
+            when (it.action) {
                 ACTION_START_OR_RESUME_SERVICE -> {
-                    if(isFirstRun) {
+                    if (isFirstRun) {
                         startForegroundService()
                         isFirstRun = false
                     } else {
@@ -101,13 +110,14 @@ class TrackingService: LifecycleService() {
                 }
                 ACTION_STOP_SERVICE -> {
                     Timber.d("Stop service")
+                    killService()
                 }
             }
         }
         return super.onStartCommand(intent, flags, startId)
     }
 
-    var isTimerEnabled = false
+    private var isTimerEnabled = false
     private var lapTime = 0L
     private var timeRun = 0L
     private var timeStarted  =0L
@@ -134,7 +144,6 @@ class TrackingService: LifecycleService() {
         }
     }
 
-
     private fun pauseService() {
         isTracking.postValue(false)
         isTimerEnabled = false
@@ -142,7 +151,7 @@ class TrackingService: LifecycleService() {
 
     private fun updateNotificationTrackingState(isTracking: Boolean) {
         val notificationActionText = if (isTracking) "Pause" else "Resume"
-        val pendingIntent = if(isTracking) {
+        val pendingIntent = if (isTracking) {
             val pauseIntent = Intent(this, TrackingService::class.java).apply {
                 action = ACTION_PAUSE_SERVICE
             }
@@ -153,19 +162,22 @@ class TrackingService: LifecycleService() {
             }
             PendingIntent.getService(this, 2, resumeIntent, FLAG_UPDATE_CURRENT)
         }
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        curNotificationBuilder.javaClass.getDeclaredField("mAction").apply {
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        curNotificationBuilder.javaClass.getDeclaredField("mActions").apply {
             isAccessible = true
             set(curNotificationBuilder, ArrayList<NotificationCompat.Action>())
         }
-        curNotificationBuilder = baseNotificationBuilder
-            .addAction(R.drawable.ic_pause, notificationActionText, pendingIntent)
-        notificationManager.notify(NOTIFICATION_ID, curNotificationBuilder.build())
+        if (!serviceKilled) {
+            curNotificationBuilder = baseNotificationBuilder
+                .addAction(R.drawable.ic_pause, notificationActionText, pendingIntent)
+            notificationManager.notify(NOTIFICATION_ID, curNotificationBuilder.build())
+        }
     }
 
     private fun updateLocationTracking(isTracking: Boolean) {
         if (isTracking) {
-            if(TrackingUtility.hasLocationPermission(this)) {
+            if (TrackingUtility.hasLocationPermission(this)) {
                 val request = LocationRequest().apply {
                     interval = LOCATION_UPDATE_INTERVAL
                     fastestInterval = FASTEST_LOCATION_INTERVAL
@@ -176,9 +188,9 @@ class TrackingService: LifecycleService() {
                     locationCallback,
                     Looper.getMainLooper()
                 )
-            } else {
-                fusedLocationProviderClient.removeLocationUpdates(locationCallback)
             }
+        } else {
+            fusedLocationProviderClient.removeLocationUpdates(locationCallback)
         }
     }
 
@@ -225,9 +237,11 @@ class TrackingService: LifecycleService() {
         startForeground(NOTIFICATION_ID, baseNotificationBuilder.build())
 
         timeRunInSeconds.observe(this, Observer {
-            val notification = curNotificationBuilder
-                .setContentText(TrackingUtility.getFormattedStopWatchTime(it * 1000L))
-            notificationManager.notify(NOTIFICATION_ID, notification.build())
+            if (!serviceKilled) {
+                val notification = curNotificationBuilder
+                    .setContentText(TrackingUtility.getFormattedStopWatchTime(it * 1000L))
+                notificationManager.notify(NOTIFICATION_ID, notification.build())
+            }
         })
     }
 

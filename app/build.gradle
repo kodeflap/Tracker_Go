@@ -107,8 +107,5 @@ dependencies {
     // MPAndroidChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-
-}
-kapt {
-    correctErrorTypes true
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 }

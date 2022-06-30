@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/card_shape"
+    android:backgroundTint="@color/material_dynamic_neutral95"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bottom_tab_shape"
+        android:backgroundTint="@color/white_transparent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/markerDate"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins"
+            android:text="Date"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/teal_200"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/markerDuration"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins"
+            android:text="Duration"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/teal_200"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/markerAvgSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins"
+            android:text="Average Speed"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/teal_200"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/markerDistance"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins"
+            android:text="Distance"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/teal_200"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/markerCaloriesBurned"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins"
+            android:text="Calories Burned"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/teal_200"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

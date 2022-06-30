@@ -7,9 +7,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:layout_margin="15dp"
         android:layout_height="0dp"
         android:id="@+id/c1InnerLayout"
-        android:background="@color/purple_700"
+        android:background="@drawable/bottom_tab_shape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -22,36 +23,43 @@
             android:id="@+id/tvTimer"
             android:text="00: 00: 00: 00"
             android:textSize="50sp"
-            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/btnToggleRun"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
+            android:background="@drawable/card_shape"
             android:layout_height="wrap_content"
             android:id="@+id/btnToggleRun"
             android:text="Start"
+            android:fontFamily="@font/poppins"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnFinishRun"
             app:flow_horizontalBias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTimer"/>
+            app:layout_constraintTop_toBottomOf="@+id/tvTimer" />
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/card_shape"
             android:id="@+id/btnFinishRun"
-            android:text="Finish Run"
+            android:fontFamily="@font/poppins"
+            android:padding="10dp"
+            android:text="Finish"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:flow_horizontalBias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btnToggleRun"
-            app:layout_constraintTop_toBottomOf="@+id/tvTimer"/>
+            app:layout_constraintTop_toBottomOf="@+id/tvTimer" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

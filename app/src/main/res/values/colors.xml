@@ -6,5 +6,8 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#E9FCFCFC</color>
+    <color name="purple_transparent">#5E3700B3</color>
+    <color name="teal_transparent">#5C03DAC5</color>
+    <color name="white_transparent">#74D8D8D8</color>
 </resources>

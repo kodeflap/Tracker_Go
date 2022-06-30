@@ -19,7 +19,7 @@ class MainRepository @Inject constructor(
 
     fun getAllRunSortedByAvgSpeed() = runDao.getAllRunSortByAvgSpeed()
 
-    fun getAllRunSortedByCaloriesBurned() = runDao.getTotalCaloriesBurned()
+    fun getAllRunSortedByCaloriesBurned() = runDao.getAllRunSortByCaloriesBurned()
 
     fun getTotalAvgSpeed() = runDao.getTotalAverageSpeed()
 
