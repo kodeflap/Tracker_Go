@@ -45,7 +45,7 @@
 
 ## Architecture Overview
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://static.wixstatic.com/media/518b8e_a1cc67d0fc4b4d8e9ee7c6596157f641~mv2.jpg/v1/crop/x_8,y_0,w_877,h_771/fill/w_549,h_482,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/20220719_222647_0000_edited.jpg)
 
 
 ## Demo
