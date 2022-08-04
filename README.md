@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 # About Tracker Go
 
 " Tracker Go" is an android application to tracks the running status by considering the parameter weight and track the  running status including average speed, time taken, calories burned, distance covered and keep record of the status history.
@@ -43,14 +35,9 @@
 -  Kotlin extension
 
 
-## Architecture Overview
+## APP ScreenShot
 
 ![App Screenshot](https://static.wixstatic.com/media/518b8e_a1cc67d0fc4b4d8e9ee7c6596157f641~mv2.jpg/v1/crop/x_8,y_0,w_877,h_771/fill/w_549,h_482,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/20220719_222647_0000_edited.jpg)
-
-
-## Demo
-
-Insert gif or link to demo
 
 
 ## Getting Started
