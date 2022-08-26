@@ -94,7 +94,9 @@ Suggested naming **feature/ feature_name
 
 5. Open pull request
 
+## LICENSE
 
+[MIT license](LICENSE)
 
 
 
