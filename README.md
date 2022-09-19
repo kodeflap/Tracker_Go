@@ -1,3 +1,17 @@
+![Tracker Go](https://user-images.githubusercontent.com/86681482/191018347-33e990d3-e943-4509-988c-0bf587794580.gif)
+
+<p align = "center">
+      <img src = "https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github" height = 25/>
+      <a href= "https://github.com/kodeflap/Tracker_Go/tags ">
+      <img src = "https://img.shields.io/github/release/kodeFlap/Tracker_Go.svg" height = 25/></a>
+      <a href= "https://github.com/kodeflap/Tracker_Go/blob/master/LICENSE ">
+      <img src = "https://img.shields.io/github/license/kodeFlap/Tracker_Go.svg" height = 25/></a>
+      <img src = "https://img.shields.io/github/contributors/kodeFlap/Tracker_Go.svg" height = 25/></a>
+      <img src = "https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" height = 25/>
+      <a href= "https://gitHub.com/kodeflap/Tracker_Go/issues/ ">
+      <img src = "https://img.shields.io/github/issues/kodeFlap/Tracker_Go.svg" height = 25/></a>
+</p>
+
 
 # About Tracker Go
 
