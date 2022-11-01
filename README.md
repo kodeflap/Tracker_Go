@@ -97,14 +97,16 @@ Contributions are what make the open-source project amazing. Which helps to lear
 
 If you have any suggestion or found any issues please free to put your suggestion.
 
-1. You can [clone the repo](https://github.com/poojaOfficial321/Tracker_Go.git) or Fork it
+1. You can Fork it
 
-2. Create your branch check out to your branch (git checkout -b)
+2. Clone the project then
+
+3. Create your branch check out to your branch (git checkout -b)
 Suggested naming **feature/ feature_name
 
-3. Commit your changes(git commit -m "new feature name")
+4. Commit your changes(git commit -m "new feature name")
 
-4. Push to branch(git push origin feature/feature_name)
+5. Push the commit(git push origin feature/feature_name)
 
 5. Open pull request
 
